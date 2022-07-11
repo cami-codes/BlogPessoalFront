@@ -3,6 +3,7 @@ import { Usuario } from 'src/app/model/Usuario';
 import { AuthService } from 'src/app/service/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
+import { AlertasService } from 'src/app/service/alertas.service';
 
 @Component({
   selector: 'app-usuario-edit',
@@ -19,14 +20,15 @@ export class UsuarioEditComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private alertas: AlertasService
   ) { }
 
   ngOnInit() {
     window.scroll(0,0)
     
     if (environment.token == '') {
-      alert('Sua sessão expirou, faça o login novamente.')
+      this.alertas.showAlertWarning('Sua sessão expirou, faça o login novamente.')
       this.router.navigate(['/entrar'])
     }
 
@@ -46,12 +48,12 @@ export class UsuarioEditComponent implements OnInit {
     this.usuario.tipo = this.tipoUser
 
     if(this.usuario.senha != this.confirmarSenha){
-      alert('As senhas estão incorretas.')
+      this.alertas.showAlertDanger('As senhas estão incorretas.')
     } else {
       this.authService.cadastrar(this.usuario).subscribe((resp: Usuario) => {
         this.usuario = resp
         this.router.navigate(["/inicio"])
-        alert('Usuário atualizado com sucesso, faça login novamente!')
+        this.alertas.showAlertSuccess('Usuário atualizado com sucesso, faça login novamente!')
         environment.token = ''
         environment.nome = ''
         environment.foto = ''

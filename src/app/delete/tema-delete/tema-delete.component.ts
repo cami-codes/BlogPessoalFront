@@ -3,6 +3,7 @@ import { Tema } from 'src/app/model/Tema';
 import { TemaService } from '../../service/tema.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
+import { AlertasService } from 'src/app/service/alertas.service';
 
 @Component({
   selector: 'app-tema-delete',
@@ -17,12 +18,13 @@ export class TemaDeleteComponent implements OnInit {
   constructor(
     private temaService: TemaService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private alertas: AlertasService
   ) { }
 
   ngOnInit() {
     if(environment.token == '') {
-      alert('Sua sessão expirou, faça o login novamente.')
+      this.alertas.showAlertWarning('Sua sessão expirou, faça o login novamente.')
       this.router.navigate(['/entrar'])
     }
 
@@ -38,7 +40,7 @@ export class TemaDeleteComponent implements OnInit {
 
   deleteTema() {
     this.temaService.deleteTema(this.idTema).subscribe(()=> {
-      alert('Tema apagado!')
+      this.alertas.showAlertSuccess('Tema apagado!')
       this.router.navigate(['/tema'])
     })
   }
