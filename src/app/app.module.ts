@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
@@ -21,6 +21,7 @@ import { PostagemEditComponent } from './edit/postagem-edit/postagem-edit.compon
 import { PostagemDeleteComponent } from './delete/postagem-delete/postagem-delete.component';
 import { UsuarioEditComponent } from './edit/usuario-edit/usuario-edit.component';
 import { AlertasComponent } from './alertas/alertas.component';
+import { TokenInterceptorService } from './service/token-interceptor.service';
 
 
 
@@ -51,7 +52,14 @@ import { AlertasComponent } from './alertas/alertas.component';
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
-  }],
+  },
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
+  }
+  ],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }
