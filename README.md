@@ -1,27 +1,47 @@
-# BlogPessoalFront
+<p align="center">
+  <img src="https://res.cloudinary.com/generation/image/upload/w_350,q_auto,f_auto/brazil/2022/04/Cover-1.png">
+</p>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.3.
+# Blog Pessoal
 
-## Development server
+Rede social desenvolvida no bootcamp da Generation Brasil.
+Para o tema, escolhi abordar questões LGBTQIAP+ em jogos através de postagens/resenhas.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+O [Back-end](https://github.com/cami-codes/BlogPessoal) foi desenvolvido a partir do framework Spring Boot.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## Funcionalidades
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Login e cadastro de usuário 
+- Menu de postagens, onde podemos realizar uma nova postagem ou cadastrar um tema.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## Rodar o projeto localmente
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Clone o projeto
 
-## Further help
+```bash
+  git clone https://github.com/cami-codes/BlogPessoalFront
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Em seu editor, abra o terminal e digite o comando abaixo para instalar os módulos necessários.
+
+```bash
+  npm install
+```
+
+Inicie o projeto através do comando abaixo e ele será inicializado no `http://localhost:4200/`.
+
+```bash
+  ng serve
+```
+
+
+
+
+## Deploy no Netlify
+
+[Cami Blog](https://cami-blog.netlify.app/)
+
